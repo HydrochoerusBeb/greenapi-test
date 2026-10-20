@@ -54,13 +54,13 @@ export function readError(error: unknown): string {
   return 'Не удалось выполнить запрос';
 }
 
-function endpoint(credentials: Credentials, method: string): string {
+function endpoint(credentials: Credentials, method: string, tail = ''): string {
   const id = encodeURIComponent(credentials.idInstance);
   const token = encodeURIComponent(credentials.apiTokenInstance);
   const host = new URL(credentials.apiUrl).host;
   const params = new URLSearchParams({
     host,
-    path: `waInstance${id}/${method}/${token}`,
+    path: `waInstance${id}/${method}/${token}${tail}`,
   });
 
   return `/api/green-api?${params}`;
@@ -133,7 +133,7 @@ export async function deleteNotification(
   receiptId: number,
   signal: AbortSignal,
 ): Promise<void> {
-  await axios.delete(endpoint(credentials, `deleteNotification/${receiptId}`), {
+  await axios.delete(endpoint(credentials, 'deleteNotification', `/${receiptId}`), {
     timeout: 15000,
     signal,
   });

@@ -58,7 +58,7 @@ function endpoint(credentials: Credentials, method: string): string {
   const id = encodeURIComponent(credentials.idInstance);
   const token = encodeURIComponent(credentials.apiTokenInstance);
   const host = new URL(credentials.apiUrl).host;
-  return `/green-api/${host}/waInstance${id}/${method}/${token}`;
+  return `/api/green-api/${host}/waInstance${id}/${method}/${token}`;
 }
 
 export async function sendTextMessage(

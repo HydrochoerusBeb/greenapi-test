@@ -58,7 +58,12 @@ function endpoint(credentials: Credentials, method: string): string {
   const id = encodeURIComponent(credentials.idInstance);
   const token = encodeURIComponent(credentials.apiTokenInstance);
   const host = new URL(credentials.apiUrl).host;
-  return `/api/green-api/${host}/waInstance${id}/${method}/${token}`;
+  const params = new URLSearchParams({
+    host,
+    path: `waInstance${id}/${method}/${token}`,
+  });
+
+  return `/api/green-api?${params}`;
 }
 
 export async function sendTextMessage(
@@ -128,7 +133,7 @@ export async function deleteNotification(
   receiptId: number,
   signal: AbortSignal,
 ): Promise<void> {
-  await axios.delete(`${endpoint(credentials, 'deleteNotification')}/${receiptId}`, {
+  await axios.delete(endpoint(credentials, `deleteNotification/${receiptId}`), {
     timeout: 15000,
     signal,
   });

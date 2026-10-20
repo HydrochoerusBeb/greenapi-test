@@ -7,11 +7,18 @@ const greenApiProxy: ProxyOptions = {
   timeout: 70000,
   proxyTimeout: 70000,
   router(req) {
-    const host = req.url?.split('/')[3] ?? '';
+    const host = new URL(req.url ?? '', 'http://localhost').searchParams.get('host') ?? '';
     if (!/^[\w.-]+\.green-api\.com$/.test(host)) return 'https://api.green-api.com';
     return `https://${host}`;
   },
-  rewrite: (path) => path.replace(/^\/api\/green-api\/[^/]+/, ''),
+  rewrite(path) {
+    const url = new URL(path, 'http://localhost');
+    const upstreamPath = url.searchParams.get('path') ?? '';
+    url.searchParams.delete('host');
+    url.searchParams.delete('path');
+    const search = url.searchParams.toString();
+    return `/${upstreamPath}${search ? `?${search}` : ''}`;
+  },
   configure(proxy) {
     proxy.on('proxyReq', (proxyReq) => {
       proxyReq.removeHeader('origin');

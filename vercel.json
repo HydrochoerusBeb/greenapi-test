@@ -3,7 +3,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "functions": {
-    "api/green-api/[...slug].js": {
+    "api/green-api.js": {
       "maxDuration": 60
     }
   }

@@ -1,0 +1,426 @@
+:root {
+  color: #060708;
+  font-family: Roboto, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  background: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background-color: #17181c;
+  background-image: radial-gradient(#3a4d78 0.6px, transparent 0.7px);
+  background-size: 22px 22px;
+}
+
+.login-card {
+  width: min(400px, 100%);
+  display: grid;
+  gap: 14px;
+  padding: 28px 24px 24px;
+  border-radius: 20px;
+  background: #222328;
+  color: #fff;
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 4px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #00b8ff, #007aff 45%, #b210db);
+}
+
+.logo span {
+  width: 22px;
+  height: 18px;
+  border: 3px solid #fff;
+  border-radius: 12px 12px 12px 4px;
+}
+
+.login-card h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.login-card p {
+  margin: -6px 0 6px;
+  text-align: center;
+  color: #ffffffad;
+  font-size: 14px;
+}
+
+.login-card label {
+  display: grid;
+  gap: 6px;
+  color: #ffffffad;
+  font-size: 13px;
+}
+
+.login-card input {
+  height: 44px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 12px;
+  color: #fff;
+  background: #ffffff14;
+}
+
+.login-card input:focus {
+  outline: 2px solid #007aff;
+}
+
+.login-card input::placeholder {
+  color: #ffffff66;
+}
+
+.login-card button {
+  height: 44px;
+  margin-top: 4px;
+  border: 0;
+  border-radius: 12px;
+  color: #fff;
+  background: #007aff;
+  font-weight: 500;
+}
+
+.login-card button:hover {
+  background: #479fff;
+}
+
+.form-error {
+  margin: 0;
+  color: #ff8d8d;
+  font-size: 13px;
+  text-align: center;
+}
+
+.shell {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  background: #fff;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-right: 1px solid #0c0d0e29;
+}
+
+.sidebar-header,
+.thread-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  background: #fff;
+}
+
+.sidebar-header {
+  justify-content: space-between;
+}
+
+.sidebar-header h1,
+.thread-header strong {
+  margin: 0;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.text-button,
+.back-button,
+.banner button {
+  border: 0;
+  padding: 0;
+  color: #007aff;
+  background: transparent;
+  font-weight: 500;
+}
+
+.new-chat {
+  display: flex;
+  gap: 8px;
+  padding: 0 12px 12px;
+}
+
+.new-chat input,
+.composer textarea {
+  width: 100%;
+  border: 0;
+  color: #060708;
+  background: #09090914;
+}
+
+.new-chat input {
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 12px;
+}
+
+.new-chat input:focus,
+.composer textarea:focus {
+  outline: 2px solid #007aff;
+}
+
+.new-chat button {
+  flex: 0 0 auto;
+  height: 40px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 12px;
+  color: #fff;
+  background: #007aff;
+  font-weight: 500;
+}
+
+.new-chat button:disabled,
+.composer button:disabled {
+  cursor: default;
+  background: #007aff7a;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 12px 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: #9d1c1c;
+  background: #ffeff0;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.thread .banner {
+  margin: 12px 16px 0;
+}
+
+.empty-list {
+  margin: 24px 16px;
+  color: #060708ad;
+  text-align: center;
+}
+
+.chat-list {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  list-style: none;
+}
+
+.chat-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 16px;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  text-align: left;
+}
+
+.chat-row.is-active,
+.chat-row:hover {
+  background: #007aff14;
+}
+
+.chat-row-text {
+  min-width: 0;
+  display: grid;
+}
+
+.chat-row-title,
+.chat-row-preview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chat-row-preview,
+.chat-row time,
+.thread-header small,
+.bubble time {
+  color: #06070885;
+  font-size: 13px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.thread-header .avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.thread-header span {
+  display: grid;
+}
+
+.thread {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle, #007aff33 0.7px, transparent 0.8px) 0 0 / 26px 26px,
+    linear-gradient(180deg, #99d5d7, #80bcff);
+}
+
+.thread-placeholder {
+  margin: auto;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.thread-placeholder p {
+  margin: 0;
+  text-shadow: 0 1px 2px #0c0d0e33;
+}
+
+.back-button {
+  display: none;
+}
+
+.messages {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  overflow: auto;
+}
+
+.bubble {
+  max-width: min(480px, 80%);
+  display: grid;
+  gap: 2px;
+  padding: 8px 10px 6px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 1px 1px #0c0d0e14;
+}
+
+.bubble p {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.bubble time {
+  justify-self: end;
+  font-size: 11px;
+}
+
+.bubble.in {
+  border-bottom-left-radius: 6px;
+  margin-right: auto;
+}
+
+.bubble.out {
+  border-bottom-right-radius: 6px;
+  margin-left: auto;
+}
+
+.composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin: 0 16px 16px;
+  padding: 8px;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.composer textarea {
+  max-height: 120px;
+  padding: 8px;
+  resize: none;
+  border-radius: 12px;
+}
+
+.composer button {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 50%;
+  background: #007aff;
+}
+
+.composer svg {
+  width: 18px;
+  height: 18px;
+  fill: #fff;
+}
+
+@media (max-width: 800px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .thread {
+    display: none;
+  }
+
+  .shell[data-open='true'] .sidebar {
+    display: none;
+  }
+
+  .sidebar {
+    border-right: 0;
+  }
+
+  .shell[data-open='true'] .thread {
+    display: flex;
+  }
+
+  .back-button {
+    display: inline;
+  }
+}
